@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["aurelien@noce.fr"]
   spec.summary       = %q{Generates a simple app.json for the current heroku project.}
   spec.description   = %q{
-    This is a packages version of my gist https://gist.github.com/ushu/129b3340c51a205157c1e2daa1da55fa.
+    A packaged version of my gist https://gist.github.com/ushu/129b3340c51a205157c1e2daa1da55fa.
     It calls the Heroku CLI to grabs the necessary info, then prints the result on STDOUT.
   }
   spec.homepage      = "https://github.com/ushu/generate_app_json"

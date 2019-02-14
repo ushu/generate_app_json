@@ -1,28 +1,23 @@
-# GenerateAppJson
+# `generate_app_json`
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/generate_app_json`. To experiment with that code, run `bin/console` for an interactive prompt.
+Generates a simple `app.json` for the current heroku project.
 
-TODO: Delete this and the text above, and describe your gem
+
+This is a packaged version of [this gist](https://gist.github.com/ushu/129b3340c51a205157c1e2daa1da55fa).
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'generate_app_json'
+```sh
+gem install generate_app_json
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install generate_app_json
 
 ## Usage
 
-TODO: Write usage instructions here
+Go into the Heroku project directory and run
+
+```sh
+$ generate_app_json
+```
 
 ## Development
 
