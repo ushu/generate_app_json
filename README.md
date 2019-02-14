@@ -13,11 +13,12 @@ gem install generate_app_json
 
 ## Usage
 
-Go into the Heroku project directory and run
-
 ```sh
-$ generate_app_json
+$ cd /path/to/the/heroku/project
+$ generate_app_json > ./app.json
 ```
+
+and then update `app.json` with the relevant content.
 
 ## Development
 
