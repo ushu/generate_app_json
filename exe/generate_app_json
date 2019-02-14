@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+require 'json'
+
+# Grab info from the heroku cli
+info = JSON.load(`heroku info --json`)
+env_variables = JSON.load(`heroku config --json`)
+buildpacks = `heroku buildpacks`.lines[1..-1].map{ |l| { 'url' => l[3...-1]}}
+addons = JSON.load(`heroku addons --json`).inject(Hash.new{ |h, k| h[k] = [] }) { |h, e|
+  name = e['addon_service']['name']
+  plan = e['plan']['name']
+  as = e['attachments'][0]['name']
+  h[name] << { 'plan' => plan, 'as' => as }
+  h
+}
+formation = info['dynos'].inject({}) { |h, ps|  
+  type = ps['type']
+  quantity = h[type] ? h[type]['quantity'] + 1 : 1
+  size = ps['size'] 
+  h[type] = { 'quantity' => quantity, 'size' => size }
+  h
+}
+name = info['app']['name']
+website = info['app']['web_url']
+repository = info['app']['git_url']
+keywords = []
+
+scripts = {}
+if File.file?('config/application.rb')
+  # Rails app detected
+  scripts['postdeploy'] = 'bundle exec rake db:migrate'
+  keywords << 'Rails'
+end
+
+app_json = {
+  'name' => name,
+  'description' => '',
+  'keywords' => keywords,
+  'website' => website,
+  'repository' => repository,
+  'buildpacks' => buildpacks,
+  'formation' => formation,
+  'addons' => addons,
+  'env' => env_variables,
+  'scripts' => scripts
+} 
+print JSON.pretty_generate(app_json)

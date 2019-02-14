@@ -5,27 +5,16 @@ require "generate_app_json/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "generate_app_json"
-  spec.version       = GenerateAppJson::VERSION
+  spec.version       = GenerateAppJson::VERSION  
   spec.authors       = ["Aurélien Noce"]
   spec.email         = ["aurelien@noce.fr"]
-
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Generates a simple app.json for the current heroku project.}
+  spec.description   = %q{
+    This is a packages version of my gist https://gist.github.com/ushu/129b3340c51a205157c1e2daa1da55fa.
+    It calls the Heroku CLI to grabs the necessary info, then prints the result on STDOUT.
+  }
+  spec.homepage      = "https://github.com/ushu/generate_app_json"
   spec.license       = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-
-    spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-    spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
